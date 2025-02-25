@@ -13,6 +13,10 @@ java {
 	}
 }
 
+test {
+	jvmArgs += ["-XX:+EnableDynamicAgentLoading"]
+}
+
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
