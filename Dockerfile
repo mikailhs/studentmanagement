@@ -1,4 +1,4 @@
-FROM openjdk:23-jdk
+FROM openjdk:21-jdk
 
 WORKDIR /app
 
@@ -10,3 +10,5 @@ EXPOSE 8080
 
 # Entry point to run the application
 ENTRYPOINT ["java", "-jar", "studentmanagement.jar"]
+
+

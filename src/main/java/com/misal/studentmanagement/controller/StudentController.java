@@ -39,4 +39,6 @@ public class StudentController {
         studentRepository.deleteById(id);
         return "Student deleted successfully";
     }
+
+
 }
