@@ -11,25 +11,31 @@ services:
     networks:
       - mynetwork
     healthcheck:
-      test: ["CMD", "pg_isready", "-U", "postgres", "-d", "demo", "-h", "localhost"]
+      test: ["CMD", "pg_isready", "-U", "postgres", "-d", "demo"]
       interval: 10s
       retries: 5
       start_period: 30s
       timeout: 10s
+
   app:
     build: .
+    ports:
+      - "8080:8080"
     depends_on:
-      - my-postgres
+      my-postgres:
+        condition: service_healthy
     networks:
       - mynetwork
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://my-postgres:5432/demo
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: 123
-    command: sh -c "sleep 30 && java -jar /app.jar"
+    command: sh -c "sleep 30 && java -jar /app/app.jar"
+
 networks:
   mynetwork:
     driver: bridge
+
 volumes:
   postgres_data:
     driver: local

@@ -2,13 +2,11 @@ FROM openjdk:21-jdk
 
 WORKDIR /app
 
-# Update the COPY command to point to the correct location of the JAR file
-COPY build/libs/studentmanagement-0.0.1-SNAPSHOT.jar /app/studentmanagement.jar
+# Ensure JAR is copied correctly
+COPY build/libs/*.jar /app/app.jar
 
-# Expose the port the app will run on
+# Expose port for Spring Boot
 EXPOSE 8080
 
-# Entry point to run the application
-ENTRYPOINT ["java", "-jar", "studentmanagement.jar"]
-
-
+# Run the Spring Boot application
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
