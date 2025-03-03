@@ -22,7 +22,7 @@ public class StudentController {
     }
 
     @GetMapping("/student/{id}")
-    public StudentDTO getStudentById(@PathVariable Long id) {
+    public StudentDTO getStudentById(@PathVariable("id") Long id) {
         return studentService.getStudentById(id);
     }
 
