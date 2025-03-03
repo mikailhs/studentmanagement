@@ -2,7 +2,7 @@ services:
   my-postgres:
     image: postgres:latest
     environment:
-      - POSTGRES_PASSWORD=123
+      - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=demo
     ports:
       - "5432:5432"
@@ -20,7 +20,7 @@ services:
   app:
     build: .
     ports:
-      - "8080:8080"
+      - "8081:8080"
     depends_on:
       my-postgres:
         condition: service_healthy
@@ -29,7 +29,7 @@ services:
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://my-postgres:5432/demo
       SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: 123
+      SPRING_DATASOURCE_PASSWORD: postgres
     command: sh -c "sleep 30 && java -jar /app/app.jar"
 
 networks:

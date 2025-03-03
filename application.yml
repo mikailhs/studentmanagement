@@ -3,4 +3,4 @@ spring:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql:demo
     username: postgres
-    password: 123
+    password: postgres
