@@ -21,7 +21,7 @@ public class StudentController {
         return studentService.getAllStudents();
     }
 
-    @GetMapping("/students/{id}") // ← Добавьте "s"
+    @GetMapping("/student/{id}")
     public StudentDTO getStudentById(@PathVariable Long id) {
         return studentService.getStudentById(id);
     }
